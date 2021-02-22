@@ -116,7 +116,8 @@ void dataAQ::stateReport(double thresh) {
         }
         if (i->first.compare("MS") == 0) {
             allStateDemogData[i->first]->accept(VR);
-            cout << thresh << endl;
+            cout << allStateDemogData[i->first]->getTotalPop() << endl;
+            cout << allStateDemogData[i->first]->getBelowPoverty() / allStateDemogData[i->first]->getTotalPop() << endl;
         }
     }
     cout << "Generated a report for a total of : " << total << endl;
