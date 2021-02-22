@@ -109,8 +109,9 @@ void dataAQ::stateReport(double thresh) {
     visitorReport VR;
     int total = 0;
     for (map<string, shared_ptr<comboDemogData>>::iterator i = allStateDemogData.begin(); i != allStateDemogData.end(); i++) {
+        cout << endl;
         if (i->second->getBelowPoverty() / i->second->getTotalPop() > thresh / 100) {
-            cout << "\nSpecial report demog Data : \n";
+            cout << "Special report demog Data : \n";
             allStateDemogData[i->first]->accept(VR);
             cout << "Special report hospital data : \n";
             allStateHospData[i->first]->accept(VR);
@@ -118,10 +119,11 @@ void dataAQ::stateReport(double thresh) {
         }
     }
     cout << "Generated a report for a total of : " << total << "\n";
-    //"\nSpecial report demog Data : \nDemographics Info(State) : MS\nEducation info : \n(% Bachelor degree or more) : 20.43\n(% high school or more) : 81.62\n % below poverty : 22.63\nSpecial report hospital data : \nHospital Info : MS\nOverall rating(out of 5) : 2.57\nGenerated a report for a total of : 1\n"
-    //"\nSpecial report demog Data : \nDemographics Info(State) : MS\nEducation info : \n(% bachelor degree or more) : 20.43\n(% high school or more) : 81.62\n % below poverty : 22.63\nSpecial report hospital data : \nHospital Info : ms\nOverall rating(out of 5) : 2.57\nGenerated a report for a total of : 1"
+//Expected: \nSpecial report demog Data : \nDemographics Info(State) : MS\nEducation info : \n(% Bachelor degree or more) : 20.43\n(% high school or more) : 81.62\n % below poverty : 22.63\nSpecial report hospital data : \nHospital Info : MS\nOverall rating(out of 5) : 2.57\nGenerated a report for a total of : 1\n
+//aActual : \nSpecial report demog Data : \nDemographics Info(State) : MS\nEducation info : \n(% bachelor degree or more) : 20.43\n(% high school or more) : 81.62\n % below poverty : 22.63\nSpecial report hospital data : \nHospital Info : MS\nOverall rating(out of 5) : 2.57\nGenerated a report for a total of : 1'
+//Expected: \nSpecial report demog Data : \nDemographics Info(State) : MS\nEducation info : \n(% Bachelor degree or more) : 20.43\n(% high school or more) : 81.62\n % below poverty : 22.63\nSpecial report hospital data : \nHospital Info : MS\nOverall rating(out of 5) : 2.57\nSpecial report demog Data : \nDemographics Info(State) : NM\nEducation info : \n(% Bachelor degree or more) : 25.58\n(% high school or more) : 83.39\n % below poverty : 20.40\nSpecial report hospital data : \nHospital Info : NM\nOverall rating(out of 5) : 2.73\nGenerated a report for a total of : 2\n
+//Actusal : \nSpecial report demog Data : \nDemographics Info(State) : MS\nEducation info : \n(% bachelor degree or more) : 20.43\n(% high school or more) : 81.62\n % below poverty : 22.63\nSpecial report hospital data : \nHospital Info : MS\nOverall rating(out of 5) : 2.57\nSpecial report demog Data : \nDemographics Info(State) : NM\nEducation info : \n(% bachelor degree or more) : 25.58\n(% high school or more) : 83.39\n % below poverty : 20.40\nSpecial report hospital data : \nHospital Info : NM\nOverall rating(out of 5) : 2.73\nGenerated a report for a total of : 2
 }
-
 ostream& operator<<(ostream &out, const dataAQ &AQ) {
     out << "bruh";
     return out;
