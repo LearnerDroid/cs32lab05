@@ -110,6 +110,7 @@ void dataAQ::stateReport(double thresh) {
     int total = 0;
     for (map<string, shared_ptr<comboDemogData>>::iterator i = allStateDemogData.begin(); i != allStateDemogData.end(); i++) {
         if (i->second->getBelowPoverty() / i->second->getTotalPop() > thresh / 100) {
+            cout << "\nSpecial report demog Data : \n";
             allStateDemogData[i->first]->accept(VR);
             allStateHospData[i->first]->accept(VR);
             total++;
