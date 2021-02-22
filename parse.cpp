@@ -55,40 +55,39 @@ void consumeColumnNames(std::ifstream &myFile) {
 /* Read one line from a CSV file for county demographic data specifically */
 shared_ptr<demogData> readCSVLineDemog(std::string theLine) {
     std::stringstream ss(theLine);
-    
+
     string name = getField(ss);
     string state = getField(ss);
 
     //turn into mathematical percent
-    double popOver65 = stod(getField(ss))/100.0;
-    double popUnder18 = stod(getField(ss))/100.0;;
-    double popUnder5 = stod(getField(ss))/100.0;;
-    double bachelorDegreeUp = stod(getField(ss))/100.0;;
-    double highSchoolUp = stod(getField(ss))/100.0;;
+    double popOver65 = stod(getField(ss)) / 100.0;
+    double popUnder18 = stod(getField(ss)) / 100.0;
+    double popUnder5 = stod(getField(ss)) / 100.0;
+    double bachelorDegreeUp = stod(getField(ss)) / 100.0;
+    double highSchoolUp = stod(getField(ss)) / 100.0;
 
     //now skip over some data
-    for (int i=0; i < 20; i++)
+    for (int i = 0; i < 20; i++)
         getField(ss);
 
     //turn into mathematical percent
-    double belowPoverty = stod(getField(ss))/100;
+    double belowPoverty = stod(getField(ss)) / 100;
 
     //now skip over some data 
-    for (int i=0; i < 10; i++)
+    for (int i = 0; i < 10; i++)
         getField(ss);
 
     int totalPop2014 = stoi(getField(ss));
 
-    //store demographic data as counts. Totals, not proportion.
-    return make_shared<demogData>(name, state, round(popOver65*totalPop2014), 
-            round(popUnder18*totalPop2014),
-            round(popUnder5*totalPop2014), 
-            round(bachelorDegreeUp*totalPop2014), 
-            round(highSchoolUp*totalPop2014), 
-            round(belowPoverty*totalPop2014), 
-            totalPop2014);
+    //store demographic data as counts
+    return make_shared<demogData>(name, state, round(popOver65 * totalPop2014),
+        round(popUnder18 * totalPop2014),
+        round(popUnder5 * totalPop2014),
+        round(bachelorDegreeUp * totalPop2014),
+        round(highSchoolUp * totalPop2014),
+        round(belowPoverty * totalPop2014),
+        totalPop2014);
 }
-
 
 //read from a CSV file (for a given data type) return a vector of the data
 // DO NOT modify 
@@ -114,6 +113,13 @@ std::vector<shared_ptr<placeData> > read_csv(std::string filename, typeFlag file
         while(std::getline(myFile, line)) {
             if (fileType == DEMOG) {
                 theData.push_back(readCSVLineDemog(line));
+                /*
+                shared_ptr<placeData> p = readCSVLineDemog(line);
+                shared_ptr<demogData> county = static_pointer_cast<demogData>(p);
+                if (county->getBelowPoverty() > county->getTotalPop()) {
+                    std::cout << county->getBelowPoverty() << "  brrrrrrrruh  " << county->getTotalPop() << std::endl;
+                }
+                */
             }
             else if (fileType == HOSPITAL) {
                 theData.push_back(readCSVLineHospital(line));

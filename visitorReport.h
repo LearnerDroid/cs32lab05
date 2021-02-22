@@ -15,9 +15,9 @@ public:
 		demogData DD = *e;
 		cout << "Demographics Info(State) : " << DD.getState();
 		cout << "\nEducation info :";
-		cout << "\n(% bachelor degree or more) : " << DD.getBAup();
-		cout << "\n(% high school or more) : " << DD.getHSup();
-		cout << "\n% below poverty : " << DD.getBelowPoverty() << endl;
+		cout << "\n(% bachelor degree or more) : " << (DD.getBAup() / DD.getTotalPop()) * 100;
+		cout << "\n(% high school or more) : " << (DD.getHSup() / DD.getTotalPop()) * 100;
+		cout << "\n% below poverty : " << (DD.getBelowPoverty() / DD.getTotalPop()) * 100 << endl;
 	}
 	virtual void visit(hospitalData* e) {
 		hospitalData HD = *e;

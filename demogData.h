@@ -19,7 +19,7 @@ class demogData : public placeData{
             popUnder5(in5), percentUndergraduate(-1), percentHighSchool(-1), totalPop(tPop), belowPoverty(0) {} 
 
     demogData(string inN, string inS, double in65, double in18,
-        double in5, double percU, double percH, double tPop, double bp) :
+        double in5, double percU, double percH, double bp, double tPop) :
             placeData(inN), state(inS), popOver65(in65), popUnder18(in18),
             popUnder5(in5), percentUndergraduate(percU), percentHighSchool(percH), totalPop(tPop), belowPoverty(bp) {}
 

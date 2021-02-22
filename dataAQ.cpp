@@ -109,15 +109,10 @@ void dataAQ::stateReport(double thresh) {
     visitorReport VR;
     int total = 0;
     for (map<string, shared_ptr<comboDemogData>>::iterator i = allStateDemogData.begin(); i != allStateDemogData.end(); i++) {
-        if (i->second->getBelowPoverty() / i->second->getTotalPop() > thresh) {
+        if (i->second->getBelowPoverty() / i->second->getTotalPop() > thresh / 100) {
             allStateDemogData[i->first]->accept(VR);
             allStateHospData[i->first]->accept(VR);
             total++;
-        }
-        if (i->first.compare("MS") == 0) {
-            allStateDemogData[i->first]->accept(VR);
-            cout << allStateDemogData[i->first]->getTotalPop() << endl;
-            cout << allStateDemogData[i->first]->getBelowPoverty() / allStateDemogData[i->first]->getTotalPop() << endl;
         }
     }
     cout << "Generated a report for a total of : " << total << endl;
