@@ -21,7 +21,7 @@ public:
 	}
 	virtual void visit(hospitalData* e) {
 		hospitalData HD = *e;
-		cout << "Hosptial Info: " << HD.getName();
+		cout << "Hospital Info: " << HD.getName();
 		cout << "\nOverall rating (out of 5): " << HD.getOverallRate();
 		cout << "\nOverall rating (out of 5): " << HD.getOverallRate() << "\n";
 	}

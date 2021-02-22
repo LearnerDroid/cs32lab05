@@ -115,7 +115,7 @@ void dataAQ::stateReport(double thresh) {
             total++;
         }
     }
-    cout << "Generated a report for a total of : " << total << endl;
+    cout << "Generated a report for a total of : " << total << "\n";
 }
 
 ostream& operator<<(ostream &out, const dataAQ &AQ) {
