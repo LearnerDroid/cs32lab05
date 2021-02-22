@@ -17,13 +17,13 @@ public:
 		cout << "\nEducation info :";
 		cout << "\n(% bachelor degree or more) : " << DD.getBAup() / DD.getTotalPop();
 		cout << "\n(% high school or more) : " << DD.getHSup() / DD.getTotalPop();
-		cout << "\n% below poverty : " << DD.getBelowPoverty() / DD.getTotalPop();
+		cout << "\n% below poverty : " << DD.getBelowPoverty() / DD.getTotalPop() << endl;
 	}
 	virtual void visit(hospitalData* e) {
 		hospitalData HD = *e;
 		cout << "Hosptial Info: " << HD.getName();
 		cout << "\nOverall rating (out of 5): " << HD.getOverallRate();
-		cout << "\nOverall rating (out of 5): " << HD.getOverallRate();
+		cout << "\nOverall rating (out of 5): " << HD.getOverallRate() << endl;
 	}
 };
 
