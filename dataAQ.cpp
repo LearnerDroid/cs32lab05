@@ -114,8 +114,10 @@ void dataAQ::stateReport(double thresh) {
             allStateHospData[i->first]->accept(VR);
             total++;
         }
-        if(i->first.compare("MS") == 0)
+        if (i->first.compare("MS") == 0) {
             allStateDemogData[i->first]->accept(VR);
+            cout << thresh << endl;
+        }
     }
     cout << "Generated a report for a total of : " << total << endl;
 }
