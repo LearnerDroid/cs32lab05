@@ -41,8 +41,8 @@ cout << "Testing Report" << endl;
     std::cout.rdbuf(prevcoutbuf);
 
     // report
-    string expectReport ="\nSpecial report demog Data:\nDemographics Info (State): MS\nEducation info:\n(\% Bachelor degree or more): 20.43\n(\% high school or more): 81.62\n\% below poverty: 22.63\nSpecial report hospital data:\nHosptial Info: MS\nOverall rating (out of 5): 2.57\nGenerated a report for a total of: 1\n";
-    
+    string expectReport = "\nSpecial report demog Data:\nDemographics Info (State): MS\nEducation info:\n(\% Bachelor degree or more): 20.43\n(\% high school or more): 81.62\n\% below poverty: 22.63\nSpecial report hospital data:\nHosptial Info: MS\nOverall rating (out of 5): 2.57\nGenerated a report for a total of: 1\n";
+
     cout << "difference in characters: " << theReport.compare(expectReport);
     ASSERT_EQUALS(expectReport, theReport);
 
